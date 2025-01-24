@@ -125,8 +125,11 @@ if st.checkbox("By"):
 # Dataset
 if st.button("Dataset"):
 	st.subheader("Prévisualisation du DataFrame")
+	if st.button("Head"):
 		st.write(df.head(2))
+	if st.button("tail"):
 		st.write(df.tail())
+	if st.button("Info"):
 		st.write(df.info())
         if st.button("Shape"):
 		st.write(df.shape)
