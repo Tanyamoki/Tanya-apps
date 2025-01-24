@@ -3,6 +3,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import sklearn
 #import seaborn as sns
 
 # Page configuration
@@ -43,12 +44,22 @@ with st.sidebar:
 
     if st.button("Data Cleaning / Pre-processing", use_container_width=True, on_click=set_page_selection, args=('data_cleaning',)):
         st.session_state.page_selection = "data_cleaning"
+	    from sklearn.preprocessing import StandardScaler
+    # Normaliser les caractéristiques
+        st.scaler = StandardScaler()
+        st.X_train = scaler.fit_transform(X_train)
+        st.X_test = scaler.transform(X_test)
 
     if st.button("Machine Learning", use_container_width=True, on_click=set_page_selection, args=('machine_learning',)): 
         st.session_state.page_selection = "machine_learning"
+	    from sklearn.neighbors import KNeighborsClassifier
+   # Créer le modèle KNN
+        st.knn = KNeighborsClassifier(n_neighbors=3)
+        knn.fit(X_train, y_train)
 
     if st.button("Prediction", use_container_width=True, on_click=set_page_selection, args=('prediction',)): 
         st.session_state.page_selection = "prediction"
+	    y_pred = knn.predict(X_test)
 
     if st.button("Conclusion", use_container_width=True, on_click=set_page_selection, args=('conclusion',)):
         st.session_state.page_selection = "conclusion"
@@ -125,14 +136,14 @@ if st.checkbox("By"):
 # Dataset
 if st.button("Dataset"):
 	st.subheader("Prévisualisation du DataFrame")
-	if st.button("Head"):
-		st.write(df.head(2))
-	if st.button("tail"):
-		st.write(df.tail())
-	if st.button("Info"):
-		st.write(df.info())
-        if st.button("Shape"):
-		st.write(df.shape)
+if st.button("Head"):
+	st.write(df.head(2))
+if st.button("tail"):
+	st.write(df.tail())
+if st.button("Info"):
+	st.write(df.info())
+ if st.button("Shape"):
+	st.write(df.shape)
 	else:
 		st.write(df.head(2))
 #EDA
@@ -140,3 +151,4 @@ if st.button("EDA"):
 	st.subheader("EDA")
                 st.write(chart)
                 st.write(chart2)
+#
