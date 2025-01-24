@@ -46,16 +46,16 @@ with st.sidebar:
         st.session_state.page_selection = "data_cleaning"
 from sklearn.preprocessing import StandardScaler
     # Normaliser les caractéristiques
-        st.scaler = StandardScaler()
-        st.X_train = scaler.fit_transform(X_train)
-        st.X_test = scaler.transform(X_test)
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
 
     if st.button("Machine Learning", use_container_width=True, on_click=set_page_selection, args=('machine_learning',)): 
         st.session_state.page_selection = "machine_learning"
 from sklearn.neighbors import KNeighborsClassifier
    # Créer le modèle KNN
-        st.knn = KNeighborsClassifier(n_neighbors=3)
-        st.knn=fit(X_train, y_train)
+        knn = KNeighborsClassifier(n_neighbors=3)
+        knn.fit(X_train, y_train)
 
     if st.button("Prediction", use_container_width=True, on_click=set_page_selection, args=('prediction',)): 
         st.session_state.page_selection = "prediction"
