@@ -122,3 +122,18 @@ if st.button("About App"):
 if st.checkbox("By"):
 	st.text("Stéphane C. K. Tékouabou")
 	st.text("ctekouaboukoumetio@gmail.com")
+# Dataset
+if st.button("Dataset"):
+	st.subheader("Prévisualisation du DataFrame")
+		st.write(df.head(2))
+		st.write(df.tail())
+		st.write(df.info())
+        if st.button("Shape"):
+		st.write(df.shape)
+	else:
+		st.write(df.head(2))
+#EDA
+if st.button("EDA"):
+	st.subheader("EDA")
+                st.write(chart)
+                st.write(chart2)
